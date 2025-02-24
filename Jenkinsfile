@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t python-docker-jenkins .'
+                sh 'docker build -t python-docker-jenkins:$(date +%s) .'
             }
         }
 
