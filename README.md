@@ -5,4 +5,8 @@ jenkins docker cicd pipeline set up
     ```
     java -jar "C:\Program Files\Jenkins\jenkins.war"
     ```
+
+    Once it is up and running you should be able to go to your `services` on your computer and see jenkins running:
+   ![image](https://github.com/user-attachments/assets/201bc51f-d376-40d1-a284-a5338ac61f4d)
+
 2. 
