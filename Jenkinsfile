@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t python-docker-jenkins:$(date +%s) .'
+                sh 'docker build --no-cache -t python-docker-jenkins:latest .'
             }
         }
 
