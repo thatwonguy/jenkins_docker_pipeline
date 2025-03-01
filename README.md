@@ -1,4 +1,4 @@
-# jenkins_docker_pipeline
+# jenkins_docker_pipeline_github_actions
 jenkins docker cicd pipeline set up
 
 ## 🚀 TL;DR: 
