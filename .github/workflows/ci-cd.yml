@@ -1,3 +1,4 @@
+# this yaml file and where it is currently located can be used as a github Actions workflow to replace jenkins
 name: Docker CI/CD Pipeline  # Defines the name of this GitHub Actions workflow
 
 on:
