@@ -1,20 +1,36 @@
-name: CI/CD Pipeline
+name: Docker CI/CD Pipeline  # Defines the name of this GitHub Actions workflow
 
 on:
-  push:
+  push:   # This section defines when the workflow should be triggered
     branches:
-      - main
+      - main  # Runs the workflow when there is a push to the 'main' branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-and-deploy:  # Job name (can be anything)
+    runs-on: ubuntu-latest  # Uses GitHub's latest Ubuntu runner for execution
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+    steps:  # Steps define the sequence of actions in this job
+      - name: 🛎️ Checkout Repository  # Step 1: Clone the GitHub repository
+        uses: actions/checkout@v4  # Uses GitHub's official action to pull the latest code
 
-      - name: Build Docker Image
-        run: docker build -t python-docker-jenkins .
+      - name: 🐳 Set Up Docker Buildx  # Step 2: Set up Docker Buildx (for multi-platform builds)
+        uses: docker/setup-buildx-action@v2  # Uses version 2 of Docker's Buildx setup action
 
-      - name: Run Docker Container
-        run: docker run -d -p 8080:8080 --name python-container python-docker-jenkins
+      - name: 🚀 Login to DockerHub (Optional - If pushing to DockerHub)  
+        uses: docker/login-action@v2  # Uses version 2 of DockerHub login action
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  # DockerHub username stored in GitHub Secrets
+          password: ${{ secrets.DOCKER_PASSWORD }}  # DockerHub password/token stored in GitHub Secrets
+
+      - name: 🏗️ Build Docker Image  # Step 4: Build Docker image with no cache
+        run: |
+          docker build --no-cache -t python-docker-jenkins:latest .
+
+      - name: 🛑 Stop & Remove Existing Container (Ignore Errors)  # Step 5: Stop any running container
+        run: |
+          docker stop python-container || true
+          docker rm python-container || true
+
+      - name: 🚀 Run Container  # Step 6: Run the Docker container on port 9090
+        run: |
+          docker run -d -p 9090:8080 --name python-container python-docker-jenkins
