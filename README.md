@@ -103,4 +103,4 @@ Whatever url you expose needs to be configured in Github:
 ---
 
 # BONUS - GITHUB ACTIONS
-To use Github Actions you need to simply create a yaml file in the `.github/workflows/your_yaml_file.yml` and the instructions in the yaml will be executed on your repo! Check out the goodies in there, its an alternative to jenkins!
+To use Github Actions you need to simply create a yaml file in the `.github/workflows/your_yaml_file.yml` and the instructions in the yaml will be executed on your repo! Check out the goodies in there, its an alternative to jenkins! One github action yaml file is a basic one and can be tested in local environment. The other one actually creates an artifact of this app and can be used for multi-stage deployment etc for enterprise level execution setups!
