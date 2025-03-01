@@ -99,3 +99,8 @@ Whatever url you expose needs to be configured in Github:
 ✅ ngrok Setup for Webhooks  
 
 🎉 Your Jenkins + Docker CI/CD Pipeline is Ready and should be working now! 🚀
+
+---
+
+# BONUS - GITHUB ACTIONS
+To use Github Actions you need to simply create a yaml file in the `.github/workflows/your_yaml_file.yml` and the instructions in the yaml will be executed on your repo! Check out the goodies in there, its an alternative to jenkins!
