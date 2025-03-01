@@ -4,7 +4,7 @@ name: Docker CI/CD Pipeline  # Defines the name of this GitHub Actions workflow
 on:
   push:   # This section defines when the workflow should be triggered
     branches:
-      - main  # Runs the workflow when there is a push to the 'main' branch
+      - master  # Runs the workflow when there is a push to the 'main' branch
 
 jobs:
   build-and-deploy:  # Job name (can be anything)
